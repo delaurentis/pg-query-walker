@@ -1,0 +1,1 @@
+SELECT name, born_at FROM pets;
