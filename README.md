@@ -1,6 +1,44 @@
+# pg-query-walker
+
+This `npm` module walks thru any PostgresQL query, and enumerates all database tables and columns used.  
+
+## Features
+
+- Uses the native query parser inside PostgresQL
+- Can analyze any valid PSQL query
+- Handles complex queries including WITH statements
+- Returns only real table names and column names
+- Ignores common table expressions and intermediate columns
+
+## Install
+
 ```
-const dependencies = new Dependencies();
-dependencies.analyze('SELECT column1, column2 FROM my_table');
-console.log('Tables Used: ', dependencies.tables);
-console.log('Columns Used: ', dependencies.columns);
+$ npm install pg-query-walker
+```
+
+## Usage
+
+```javascript
+// Include file system to read SQL files
+// and the query walker to analyze them
+const fs = require('fs');
+const walker = require('pg-query-walker');
+
+// Analyze SQL from a file
+const analysis = walker.analyzeSQL(fs.readFileSync('pets.sql', 'utf8'));
+
+// Display the results
+console.log('Tables Used: ', analysis.tables);
+console.log('Columns Used: ', analysis.columns);
+```
+
+## Output Format
+
+```javascript
+{ 
+  tables: ["animals", "pets"], 
+  columns: { "animals.name", 
+             "pets.born_at", 
+             "pets.name" } 
+}
 ```
