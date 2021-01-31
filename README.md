@@ -19,7 +19,7 @@ $ npm install pg-query-walker
 ## Usage
 
 ```javascript
-// Include file system to read SQL files
+// Use the file system module to read SQL files
 // and the query walker to analyze them
 const fs = require('fs');
 const walker = require('pg-query-walker');
@@ -32,7 +32,15 @@ console.log('Tables Used: ', analysis.tables);
 console.log('Columns Used: ', analysis.columns);
 ```
 
-## Output Format
+## SQL Input
+
+```sql
+SELECT name, born_at, a.name AS species FROM pets
+INNER JOIN animals a ON a.id = pets.animal_id
+ORDER BY born_at
+```
+
+## JSON Output
 
 ```javascript
 { 
