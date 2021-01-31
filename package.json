@@ -1,6 +1,6 @@
 {
   "name": "pg-query-walker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Analyzes a SQL query you pass in, and provides a list of all database tables and columns that the query references.  Since it uses the PostgresQL query parser, it can process any valid PostgresQL query.",
   "main": "index.js",
   "scripts": {
