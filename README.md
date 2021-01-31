@@ -19,7 +19,7 @@ $ npm install pg-query-walker
 ## Usage
 
 ```javascript
-// Include file system to read SQL files
+// Use the file system module to read SQL files
 // and the query walker to analyze them
 const fs = require('fs');
 const walker = require('pg-query-walker');
