@@ -15,7 +15,8 @@ const analyzeSQL = (sql) => {
     return dependenciesFromComplexQuery(query);
   }
   catch(error) {
-    throw new Error("Please check SQL.  May not be valid.");
+    //throw new Error("Please check SQL.  May not be valid.");
+    throw(error);
   }
 };
 

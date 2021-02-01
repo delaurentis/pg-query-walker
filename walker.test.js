@@ -22,6 +22,18 @@ test('Join', () => {
   ]);
 });
 
+test('Select *', () => {
+  const analysis = walker.analyzeSQL(fs.readFileSync('./sql/star.sql', 'utf8'));
+  expect(analysis.tables).toEqual(['animals', 'pets']);
+  expect(analysis.columns).toEqual([
+    'animals.id',
+    'animals.name',
+    'pets.*',
+    'pets.animal_id'
+  ]);
+});
+
+
 test('With (Multiple Selects)', () => {
   const analysis = walker.analyzeSQL(fs.readFileSync('./sql/with.sql', 'utf8'));
   expect(analysis.tables).toEqual(['animals', 'pets']);
